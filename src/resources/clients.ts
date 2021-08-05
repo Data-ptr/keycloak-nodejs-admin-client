@@ -659,6 +659,43 @@ export class Clients extends Resource<{realm?: string}> {
     urlParamKeys: ['id', 'type', 'permissionId'],
   });
 
+  public createPermission = this.makeUpdateRequest<
+    {id: string; type: string},
+    PolicyRepresentation,
+    PolicyRepresentation
+  >({
+    method: 'POST',
+    path: '/{id}/authz/resource-server/permission/{type}',
+    urlParamKeys: ['id', 'type'],
+  });
+
+  // Expect:
+  /*
+  {
+    "enabled": true,
+    "resource": "99b14477-791b-4798-9bea-ce51cfe24f65",
+    "scopePermissions": {
+      "view": "ecf91379-ba8e-4c93-914a-ee7619211180",
+      "manage": "d9807029-a17c-40fc-812e-139a5a82f640",
+      "configure": "b7331d88-2dca-4328-8dba-9fdc34e5a37b",
+      "map-roles": "71e869d7-9c0a-4f8b-a32f-e6c0e963a3b5",
+      "map-roles-client-scope": "08d4a31c-00c5-4482-826f-66fdf1a5f747",
+      "map-roles-composite": "a5be27cc-4b4b-4058-b174-266649e9bbc2",
+      "token-exchange": "c0912d2a-40e7-4f05-a1a2-0bd7436c8551"
+    }
+  }
+  */
+
+  public enablePermissions = this.makeUpdateRequest<
+    {id: string;},
+    {enabled: true},
+    void
+  >({
+    method: 'PUT',
+    path: '/{id}/management/permissions',
+    urlParamKeys: ['id']
+  });
+
   public delPermission = this.makeRequest<
     {id: string; type: string; permissionId: string},
     void
