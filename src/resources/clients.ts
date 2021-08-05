@@ -670,8 +670,8 @@ export class Clients extends Resource<{realm?: string}> {
   });
 
   public enablePermissions = this.makeUpdateRequest<
-    {id: string;},
-    {enabled: true},
+    {id: string},
+    {enabled: boolean},
     ManagementPermissionReference
   >({
     method: 'PUT',
