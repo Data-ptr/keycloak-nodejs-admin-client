@@ -2,6 +2,7 @@ import {KeycloakAdminClient} from '../client';
 import ClientRepresentation from '../defs/clientRepresentation';
 import ClientScopeRepresentation from '../defs/clientScopeRepresentation';
 import CredentialRepresentation from '../defs/credentialRepresentation';
+import ManagementPermissionReference from '../defs/managementPermissionReference';
 import MappingsRepresentation from '../defs/mappingsRepresentation';
 import PolicyRepresentation from '../defs/policyRepresentation';
 import ResourceRepresentation from '../defs/resourceRepresentation';
